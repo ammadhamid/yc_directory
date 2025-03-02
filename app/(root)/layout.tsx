@@ -1,12 +1,21 @@
+"use client";
+
+import { SessionProvider } from "next-auth/react";
 import NavBar from "../components/NavBar";
 
 export default function layout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <main className="font-work-sans">
-      <NavBar />
-      {children}
-    </main>
+    <SessionProvider>
+      <html lang="en">
+        <body>
+          <main className="font-sans">
+            <NavBar />
+            {children}
+          </main>
+        </body>
+      </html>
+    </SessionProvider>
   );
 }
